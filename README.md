@@ -54,7 +54,7 @@ using System; // for console
 // we will use process name in our test case
 var processMemory = new ProcessMemory("mygame.exe")
 
-// some imaginary health offsets
+// some imaginary health address
 nint healthOffset = 0x00001337;
 
 // reading the "health" of type uint (unsigned int, 4 bytes)
@@ -75,7 +75,7 @@ using System; // for console
 // we will use process name in our test case
 var processMemory = new ProcessMemory("mygame.exe")
 
-// some imaginary health offsets
+// some imaginary health address
 nint healthOffset = 0x00001337;
 
 // reading the "health" of type uint (unsigned int)
@@ -102,7 +102,7 @@ using System; // for console
 // we will use process name in our test case
 var processMemory = new ProcessMemory("mygame.exe")
 
-// some imaginary health offsets
+// some imaginary health address
 nint healthOffset = 0x00001337;
 
 // reading the "health" as byte array
@@ -126,8 +126,8 @@ var processMemory = new ProcessMemory("mygame.exe")
 
 // imagined module
 var moduleName = "client.dll";
-var clientDllHandle = processMemory.GetModuleHandle(moduleName); // type: IntPtr
-var clientDllBaseAddress = processMemory.GetModuleBaseAddress(moduleName); // type: IntPtr
+var clientDllHandle = processMemory.GetModuleHandle(moduleName); // return type: IntPtr
+var clientDllBaseAddress = processMemory.GetModuleBaseAddress(moduleName); // return type: IntPtr
 ```
 
 - Getting `Proc Address` in your process _(Address of an exported function or variable from the specified dynamic-link-library (DLL))_
@@ -141,7 +141,7 @@ var processMemory = new ProcessMemory("mygame.exe")
 
 // imagined exported function
 var functionName = "myExportedFunction";
-var myExportedFunctionAddress = processMemory.GetProcAddress(functionName);
+var myExportedFunctionAddress = processMemory.GetProcAddress(functionName) // return type;
 
 // or you can even get proc address of a different handle
 // for example if you need an exported function from certain module that you might have obtained earlier
@@ -149,7 +149,7 @@ var myExportedFunctionAddress = processMemory.GetProcAddress(functionName);
 
 var anotherFunctionName = "myAnotherExportedFunction";
 var myModuleHandle = new IntPtr(0x12345);
-var myAnotherExportedFunction = processMemory.GetProcAddress(myModuleHandle, anotherFunctionName);
+var myAnotherExportedFunction = processMemory.GetProcAddress(myModuleHandle, anotherFunctionName) // return type;
 ```
 
 ### TODO
